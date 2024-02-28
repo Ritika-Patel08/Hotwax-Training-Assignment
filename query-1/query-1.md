@@ -21,19 +21,19 @@ from
   join order_status os on oi.ORDER_ID = os.ORDER_ID 
   and oi.ORDER_ITEM_SEQ_ID = os.ORDER_ITEM_SEQ_ID 
   join facility f on f.FACILITY_ID = oisg.FACILITY_ID 
+  join facility_type ft on ft.facility_type_id = f.facility_type_id
 where 
-  f.FACILITY_TYPE_ID = "WAREHOUSE" 
-  and os.STATUS_DATETIME >= DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH) 
+  ft.PARENT_TYPE_ID = "DISTRIBUTION_CENTER" 
+  and os.STATUS_DATETIME >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH)
 group by 
   oi.order_id 
 having 
   count(oi.order_item_seq_id) = 1;
-
 ```
 
 ## OUTPUT 
-![Alt text](image2.png)
+![Alt text](image-1.png)
 
 ## QUERY COST 
 
-![Alt text](image-1.png)
+![Alt text](image.png)
