@@ -6,7 +6,8 @@
 ```sql
 select 
   oh.ORDER_ID, 
-  ocm.CONTACT_MECH_ID 
+  ocm.CONTACT_MECH_ID,
+  os.status_id
 from 
   order_header oh 
   join order_contact_mech ocm on oh.order_id = ocm.order_id 
@@ -19,9 +20,7 @@ where
 ```
 
 ## OUTPUT
-
-![Alt text](image-4.png)
+![Alt text](image.png)
 
 ## QUERY COST 
-
-![Alt text](image-5.png)
+![Alt text](image-1.png)
